@@ -12,20 +12,20 @@ export async function createClient() {
         get(name: string) {
           return cookieStore.get(name)?.value
         },
-        set(name: string, value: string, options: CookieOptions) {
-          try {
-            cookieStore.set({ name, value, ...options })
-          } catch (error) {
-            // Server Component에서 호출될 때 무시
-          }
-        },
-        remove(name: string, options: CookieOptions) {
-          try {
-            cookieStore.set({ name, value: '', ...options })
-          } catch (error) {
-            // Server Component에서 호출될 때 무시
-          }
-        },
+set(name: string, value: string, options: CookieOptions) {
+  try {
+    cookieStore.set({ name, value, ...options })
+  } catch {
+    // Server Component에서 호출될 때 무시
+  }
+},
+remove(name: string, options: CookieOptions) {
+  try {
+    cookieStore.set({ name, value: '', ...options })
+  } catch {
+    // Server Component에서 호출될 때 무시
+  }
+},
       },
     }
   )

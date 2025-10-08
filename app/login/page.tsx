@@ -37,9 +37,10 @@ export default function LoginPage() {
         router.push('/')
         router.refresh()
       }
-    } catch (error: any) {
-      setMessage(`오류: ${error.message}`)
-    } finally {
+  } catch (error) {
+  const errorMessage = error instanceof Error ? error.message : '알 수 없는 오류가 발생했습니다'
+  setMessage(`오류: ${errorMessage}`)
+} finally {
       setLoading(false)
     }
   }
