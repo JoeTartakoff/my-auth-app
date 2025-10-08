@@ -21,9 +21,9 @@ export default async function Home() {
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-lg shadow">
         <div>
-          <h2 className="text-center text-3xl font-bold">환영합니다!</h2>
+          <h2 className="text-center text-3xl font-bold">ようこそ！</h2>
           <p className="mt-2 text-center text-gray-600">
-            로그인한 사용자: {user.email}
+            ログインユーザー: {user.email}
           </p>
         </div>
         
@@ -32,7 +32,7 @@ export default async function Home() {
             type="submit"
             className="w-full py-3 px-4 border border-transparent rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
           >
-            로그아웃
+            ログアウト
           </button>
         </form>
       </div>
