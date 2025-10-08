@@ -26,7 +26,7 @@ export default function LoginPage() {
         })
         
         if (error) throw error
-        setMessage('회원가입 성공! 이메일을 확인해주세요.')
+        setMessage('会員登録成功！メールをご確認ください。')
       } else {
         const { error } = await supabase.auth.signInWithPassword({
           email,
@@ -37,10 +37,10 @@ export default function LoginPage() {
         router.push('/')
         router.refresh()
       }
-  } catch (error) {
-  const errorMessage = error instanceof Error ? error.message : '알 수 없는 오류가 발생했습니다'
-  setMessage(`오류: ${errorMessage}`)
-} finally {
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : '不明なエラーが発生しました'
+      setMessage(`エラー: ${errorMessage}`)
+    } finally {
       setLoading(false)
     }
   }
@@ -50,12 +50,12 @@ export default function LoginPage() {
       <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-lg shadow">
         <div>
           <h2 className="text-center text-3xl font-bold">
-            {isSignUp ? '회원가입' : '로그인'}
+            {isSignUp ? '会員登録' : 'ログイン'}
           </h2>
         </div>
 
         {message && (
-          <div className={`p-4 rounded ${message.includes('오류') ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`}>
+          <div className={`p-4 rounded ${message.includes('エラー') ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`}>
             {message}
           </div>
         )}
@@ -63,7 +63,7 @@ export default function LoginPage() {
         <form onSubmit={handleEmailAuth} className="space-y-4">
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-              이메일
+              メールアドレス
             </label>
             <input
               id="email"
@@ -77,7 +77,7 @@ export default function LoginPage() {
 
           <div>
             <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-              비밀번호
+              パスワード
             </label>
             <input
               id="password"
@@ -94,7 +94,7 @@ export default function LoginPage() {
             disabled={loading}
             className="w-full py-3 px-4 border border-transparent rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
           >
-            {loading ? '처리 중...' : isSignUp ? '회원가입' : '로그인'}
+            {loading ? '処理中...' : isSignUp ? '会員登録' : 'ログイン'}
           </button>
         </form>
 
@@ -103,7 +103,7 @@ export default function LoginPage() {
             onClick={() => setIsSignUp(!isSignUp)}
             className="text-sm text-blue-600 hover:text-blue-500"
           >
-            {isSignUp ? '이미 계정이 있으신가요? 로그인' : '계정이 없으신가요? 회원가입'}
+            {isSignUp ? 'すでにアカウントをお持ちですか？ログイン' : 'アカウントをお持ちでないですか？会員登録'}
           </button>
         </div>
       </div>
